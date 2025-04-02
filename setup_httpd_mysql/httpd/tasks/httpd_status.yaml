@@ -1,0 +1,16 @@
+---
+  - name: checking the httpd is installed
+    command:
+      cmd: rpm -q httpd
+    register: httpd_install
+    failed_when: httpd_install.rc != 0
+
+  - name: checking the httpd is running
+    command:
+      cmd: systemctl status httpd
+    register: httpd_status
+    failed_when: httpd_status.rc != 0
+
+  - name: Output the details of the status check
+    debug:
+      msg: "Httpd is installed: {{ httpd_status.stdout }} & {{ httpd_install }}"

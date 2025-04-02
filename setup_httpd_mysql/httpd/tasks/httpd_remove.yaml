@@ -1,0 +1,10 @@
+---
+  - name: removing httpd
+    hosts: webservers
+    become: true
+    tasks:
+
+      - name: removing httpd
+        yum:
+          name: httpd
+          state: absent

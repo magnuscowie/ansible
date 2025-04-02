@@ -1,0 +1,5 @@
+---
+  - name: Update Instance
+    yum:
+      name: "*"
+      state: latest

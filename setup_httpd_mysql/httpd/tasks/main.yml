@@ -1,0 +1,22 @@
+---
+# tasks file for docker
+- name: updating ec2 instance and installing packages before main install
+  hosts: webservers
+  become: yes
+  tasks:
+
+    - name: call update instance
+      import_tasks: ../../generic/tasks/update_instance.yaml
+
+    - name: installing all packags
+      import_tasks: ../../generic/tasks/packages.yaml
+
+    - name: installing httpd
+      import_tasks: httpd_install.yaml
+
+    - name: starting httpd
+      import_tasks: httpd_start.yaml
+
+    - name: Checking status
+      import_tasks: httpd_status.yaml
+

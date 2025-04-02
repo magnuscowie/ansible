@@ -1,0 +1,8 @@
+---
+  - name: Install generic packages
+    yum:
+      name:
+        - git
+        - curl-minimal
+        - libcurl-minimal
+      state: latest
