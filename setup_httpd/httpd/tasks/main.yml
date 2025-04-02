@@ -14,6 +14,9 @@
     - name: installing httpd
       import_tasks: httpd_install.yaml
 
+    - name: copying latest index html
+      import_tasks: httpd_copy_index.yaml
+
     - name: starting httpd
       import_tasks: httpd_start.yaml
 

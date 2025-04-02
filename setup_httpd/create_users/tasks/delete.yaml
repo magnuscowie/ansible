@@ -1,0 +1,15 @@
+      - name: delete user
+        user:
+          name: "{{ item }}"
+          state: absent
+        with_items:
+          - magnus1
+          - magnus2
+          - magnus3
+          - magnus4
+          - magnus5
+          - cowie1
+          - cowie2
+          - cowie3
+          - cowie4
+          - cowie5

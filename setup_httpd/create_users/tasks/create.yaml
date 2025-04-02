@@ -1,0 +1,17 @@
+      - name: create user
+        user:
+          name: "{{ item }}"
+          state: present
+          shell: /bin/bash
+          home: /home/{{ item }}
+        with_items:
+          - magnus1
+          - magnus2
+          - magnus3
+          - magnus4
+          - magnus5
+          - cowie1
+          - cowie2
+          - cowie3
+          - cowie4
+          - cowie5

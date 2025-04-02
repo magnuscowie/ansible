@@ -1,0 +1,8 @@
+---
+  - name: creating 10 new users
+    hosts: webservers
+    become: yes
+    tasks:
+
+      - import_tasks: create.yaml
+      - import_tasks: delete.yaml
