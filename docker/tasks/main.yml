@@ -1,0 +1,34 @@
+---
+# tasks file for docker
+- name: install Docker on the docker ec2 instance
+  hosts: docker
+  become: yes
+  tasks:
+
+  - name: Update Instance
+    yum:
+      name: "*"
+      state: latest
+
+  - name: Install Docker on EC2 instance
+    yum:
+      name: docker
+      state: latest
+
+  - name: Start Docker on EC2 instance
+    service:
+      name: docker
+      state: started
+      enabled: true
+
+  - name: Add Docker to EC2 instance
+    user:
+      name: ec2-user
+      groups: docker
+      append: yes
+
+  - name: change permission of docker fle
+    file:
+      path: /var/run/docker.sock
+      mode: '777'
+      state: file
