@@ -1,0 +1,23 @@
+---
+- name: creating users
+  hosts:  uk
+  become: yes
+  tasks:
+
+  - name: Create Group
+    group:
+      name: IT
+      state: present
+
+  - name: add users
+    user:
+      name: "{{ item.name }}"
+      group: "{{ item.group }}"
+      uid: "{{ item.uid }}"
+      state: present
+    loop:
+      - { name: 'A1', group: 'IT', uid: 3001}
+      - { name: 'A2', group: 'IT', uid: 3002}
+      - { name: 'A3', group: 'IT', uid: 3003}
+
+...

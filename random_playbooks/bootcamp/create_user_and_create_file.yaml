@@ -1,0 +1,31 @@
+---
+- name: first play
+  hosts: webservers
+  become: yes
+  tasks:
+  - name: Create User
+    user:
+      name: A1
+      state: present
+  - name: Create User2
+    user:
+      name: A2
+      state: present
+
+- name: second play
+  hosts: databases
+  become: yes
+  tasks:
+  - name: Create file 1
+    file:
+      path: /tmp/file1.txt
+      state: touch
+  - name: Create file 2
+    file:
+      path: /tmp/file2.txt
+      state: touch
+  - name: Create file 3
+    file:
+      path: /tmp/file3.txt
+      state: touch
+...

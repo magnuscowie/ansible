@@ -1,0 +1,33 @@
+---
+- name: Installing packages
+  hosts:  webservers
+  become: yes
+  tasks:
+
+  - name: update all
+    yum:
+      update_cache: yes
+
+  - name: installing httpd
+    yum:
+      name: httpd
+      state: present
+  - name: isntall tree
+    yum:
+      name: tree
+      state:  present
+
+- name: starting services
+  hosts:  uk
+  become: yes
+  tasks:
+
+  - name: starting httpd service
+    service:
+      name: httpd
+      state: started
+  - name: starting httpd service
+    service:
+      name: httpd
+      state: started
+...

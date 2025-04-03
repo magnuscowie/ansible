@@ -1,0 +1,28 @@
+---
+- name: learning variables
+  hosts: uk
+  become: true
+  vars:
+    a:  10
+    b:  20
+    user1:  john
+  vars_files:
+    - "vars.yaml"
+  tasks:
+  - name: add user "{{ user1 }}"
+    user:
+      name: "{{ user1 }}"
+      state: present
+  - name: add user "{{ user2 }}"
+    user:
+      name: "{{ user2 }}"
+      shell: "{{ shell }}"
+      uid: "{{ uid }}"
+  - name: calculations
+    debug:
+      msg:
+      - the sum of {{ a }}  and {{ b }} is "{{ a + b }}"
+      - the sub of {{a}}  and {{b}} is "{{ a - b }}"
+      - the mul of {{a}}  and {{b}} is "{{ a * b }}"
+      - the div of {{a}}  and {{b}} is "{{ a / b }}"
+...

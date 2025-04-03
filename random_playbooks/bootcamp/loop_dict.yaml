@@ -1,0 +1,13 @@
+---
+- name: try loops over dictionary
+  hosts: localhost
+  vars:
+    data1:
+      env: dev
+      app: neft
+      dish: samosa
+  tasks:
+  - name: testing dictionary
+    debug:
+      msg: "Natwest {{ item.key }} is {{ item.value }}"
+    loop: "{{ data1 | dict2items }}"

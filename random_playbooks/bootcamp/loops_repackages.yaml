@@ -1,0 +1,14 @@
+---
+- name: learning loops
+  hosts:  uk
+  become: yes
+  tasks:
+
+  - name: uninstall "{{ item }}" packages
+    yum:
+      name: "{{ item }}"
+      state: absent
+    loop:
+      - tree
+      - httpd
+...
