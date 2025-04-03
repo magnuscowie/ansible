@@ -1,0 +1,14 @@
+---
+- name: learning templates
+  hosts: uk
+  become: yes
+  vars:
+   system_owner: "test1@gmail.com"
+  tasks:
+  - name: setting up discalaimer
+    template:
+      src: motd.j2
+      dest: /etc/motd
+      owner: root
+      group: root
+      mode: 0666

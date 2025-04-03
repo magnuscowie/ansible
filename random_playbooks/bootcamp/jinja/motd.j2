@@ -1,0 +1,9 @@
+cat motd.j2
+This is {{ ansible_facts['fqdn'] }}
+This is a {{ ansible_facts['distribution'] }} version
+{{ ansible_facts['distribution_version'] }} system.
+IP address of this machine is {{ ansible_facts['default_ipv4']['address']  }}
+ My machine hostnam is  {{ ansible_hostname }}
+ and fqdn is {{ ansible_facts['fqdn'] }}
+ and ipv4 address is {{ ansible_facts.default_ipv4.address }}
+ and ipv4 address is {{ ansible_facts['default_ipv4']['address'] }}

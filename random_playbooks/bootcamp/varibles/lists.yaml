@@ -1,0 +1,28 @@
+--
+- name: learning list type variables
+  hosts: web
+  vars:
+    names:
+    - a1
+    - b1
+    - c1
+    age: [23,32,12]
+    city:
+      capital: London
+      fin-cap: Mumbai
+      picnic-spot: Himalayas
+    servers: {server1: email, server2: db1}
+  tasks:
+  - name: print the values
+    debug:
+      msg: |
+        The age of  "{{ names[0] }}" is "{{ age[0] }}"
+        The age of  "{{ names[1] }}" is "{{ age[1] }}"
+  - name: print the cities
+    debug:
+       msg:
+         - the capital city is "{{city.capital}}"
+         - the capital city is "{city[capital]}"
+         - friends , trying to print cities info "{{ city }}"
+         - server is "{{servers}}"
+         - server is "{{servers.server1}}"

@@ -1,0 +1,30 @@
+---
+- name: adding users
+  hosts: web
+  vars_files:
+  - "variables.yaml"
+  tasks:
+  - name: create user {{price['n
+    user:
+      name: "{{price['name']}}"
+      uid: "{{price.uid}}"
+      shell: "{{price.shell}}"
+  - name: adding user {{ item }}
+    user:
+      name : "{{ item }}"
+      state: present
+    loop:
+      - A1
+      - A2
+      - A3
+  - name: create user
+    user:
+      name: "{{ item.name }}"
+      uid: "{{ item.uid }}"
+      shell: "{{ item.shell }}"
+      state: present
+    loop:
+      - "{{ price }}"
+      - "{{ user2 }}"
+      - "{{ user3 }}"
+      - "{{ user4 }}"
