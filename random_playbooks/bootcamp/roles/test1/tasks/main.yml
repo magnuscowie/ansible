@@ -1,0 +1,12 @@
+---
+# tasks file for webserver
+- name: install httpd
+  yum:
+    name: "{{ webserver }}"
+    state: present
+- name: copy index.html
+  copy:
+    src: files/index.html
+    dest: /var/www/html/index.html
+  notify:
+  - start httpd
